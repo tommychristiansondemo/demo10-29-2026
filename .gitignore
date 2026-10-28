@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+
+# CDK
+cdk.out/
+*.swp
+
+# Node / front-end
+node_modules/
+
+# Secrets - never commit (Requirement 17.4)
+.env
+*.pem
+*.key

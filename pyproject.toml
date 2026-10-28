@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pharmapulse"
+version = "0.1.0"
+description = "PharmaPulse - agentic drug supply and shortage assistant (AWS Bedrock AgentCore + CDK)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Instructor" }]
+
+dependencies = [
+    "aws-cdk-lib>=2.140.0,<3.0.0",
+    "constructs>=10.0.0,<11.0.0",
+    "fastmcp>=2.0.0",
+    "httpx>=0.27.0",
+    "boto3>=1.34.0",
+    "botocore>=1.34.0",
+    "python-jose[cryptography]>=3.3.0",
+    "python-ulid>=2.2.0",
+    "strands-agents>=1.0.0,<2.0.0",
+    "bedrock-agentcore>=1.0.0,<2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "hypothesis>=6.100.0",
+    "moto[dynamodb]>=5.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["stacks*", "servers*", "backend*", "shared*", "agent*"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-ra -q"
+markers = [
+    "property: property-based tests (Hypothesis)",
+    "unit: fast unit tests",
+    "smoke: smoke tests against deployed resources",
+    "integration: integration tests against managed AWS services",
+]
+filterwarnings = ["ignore::DeprecationWarning"]

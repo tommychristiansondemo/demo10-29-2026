@@ -1,0 +1,27 @@
+{
+  "app": "python3 app.py",
+  "watch": {
+    "include": ["**"],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "requirements*.txt",
+      "pyproject.toml",
+      "**/__pycache__",
+      "tests",
+      "node_modules"
+    ]
+  },
+  "context": {
+    "project": "PharmaPulse",
+    "owner": "Instructor",
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
+    "@aws-cdk/core:checkSecretUsage": true,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/core:validateSnapshotRemovalPolicy": true,
+    "@aws-cdk/aws-s3:createDefaultLoggingPolicy": true,
+    "@aws-cdk/aws-s3:serverAccessLogsUseBucketPolicy": true,
+    "@aws-cdk/core:enablePartitionLiterals": true,
+    "@aws-cdk/core:newStyleStackSynthesis": true
+  }
+}
